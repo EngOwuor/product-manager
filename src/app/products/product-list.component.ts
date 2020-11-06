@@ -5,8 +5,12 @@ import {Component} from '@angular/core'
     templateUrl : './product-list.component.html'
 })
 export class ProductListComponent{
-    pageTitle  = 'Product List'
-    products:any[] =[
+  pageTitle  = 'Product List'
+  imageWidth:number = 50;
+  imageMargine:number=2;
+  showImage:boolean = false;
+  listFilter:string ='cart';
+  products:any[] =[
         {
           "productId": 1,
           "productName": "Leaf Rake",
@@ -60,5 +64,8 @@ export class ProductListComponent{
       
 
     ];
+  toggleImage():void{
+    this.showImage = !this.showImage;
+  };
     
 }
