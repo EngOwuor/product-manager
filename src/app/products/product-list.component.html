@@ -5,10 +5,10 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-2">Filter By:</div>
-            <div class="col-md-4"><input type="text"[(ngModel)]='listFilter' /> </div>
+            <div class="col-md-4"><input type="text" [(ngModel)]='listFilter' /> </div>
         </div>
         <div class="row">
-            <div class="col-md-6"><h4>Filtered By: {{listFilter}}</h4></div>
+            <div class="col-md-6"><h4>Filtered By: {{listFilter}} </h4></div>
         </div>
         <div class="table-responsive">
             <table class="table" *ngIf='products && products.length'>
@@ -30,9 +30,9 @@
                             [style.margin.px]='imageMargine'>
                         </td>
                         <td>{{product.productName}}</td>
-                        <td>{{product.productCode}}</td>
+                        <td>{{product.productCode|lowercase}}</td>
                         <td>{{product.releaseDate}}</td>
-                        <td>{{product.price}}</td>
+                        <td>{{product.price|currency:'KES':'symbol':'1.2-2'}}</td>
                         <td>{{product.starRating}}</td>
                     </tr>
                 </tbody>
