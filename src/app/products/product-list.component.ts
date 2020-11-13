@@ -1,4 +1,6 @@
+import { flatten } from '@angular/compiler';
 import {Component, OnInit} from '@angular/core'
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { from } from 'rxjs';
 import{IProduct} from './product'
 
@@ -12,7 +14,15 @@ export class ProductListComponent implements OnInit{
   imageWidth:number = 50;
   imageMargine:number=2;
   showImage:boolean = false;
-  listFilter:string ='cart';
+  _listFilter:string;
+  get listFilter():string{
+    return this._listFilter;
+  }
+  set listFilter(value:string){
+    this._listFilter = value;
+    this.filteredProducts = this._listFilter? this.performFilter(this.listFilter) : this.products;
+  }
+  filteredProducts:IProduct[];
   products:IProduct[] =[
         {
           "productId": 1,
@@ -67,6 +77,10 @@ export class ProductListComponent implements OnInit{
       
 
     ];
+  performFilter(filterBy:string):IProduct[]{
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product:IProduct)=>product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
   toggleImage():void{
     this.showImage = !this.showImage;
   };
