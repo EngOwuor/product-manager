@@ -30,7 +30,7 @@
                             [style.margin.px]='imageMargine'>
                         </td>
                         <td>{{product.productName}}</td>
-                        <td>{{product.productCode|lowercase}}</td>
+                        <td>{{product.productCode|lowercase|convertToSpaces:'-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price|currency:'KES':'symbol':'1.2-2'}}</td>
                         <td>{{product.starRating}}</td>
