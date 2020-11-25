@@ -33,7 +33,7 @@
                         <td>{{product.productCode|lowercase|convertToSpaces:'-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price|currency:'KES':'symbol':'1.2-2'}}</td>
-                        <td>{{product.starRating}}</td>
+                        <td><pm-star [rating]='product.starRating' (notify)='onNotified($event)'></pm-star></td>
                     </tr>
                 </tbody>
             </table>
